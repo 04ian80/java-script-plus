@@ -1,9 +1,23 @@
-function printTimeTable(a) {
-  for (i = 1; i < 10; i++) {
-    console.log(a + "*" + i + "=" + a * i);
+function makeCounterFuction(initval) {
+  let count = initval;
+  function increase() {
+    count++;
+    console.log(count);
   }
+  return increase;
 }
 
-for (a = 1; a < 10; a++) {
-  printTimeTable(a);
-}
+const counter1 = makeCounterFuction(0);
+const counter2 = makeCounterFuction(10);
+
+counter1();
+counter1();
+counter1();
+counter1();
+counter1();
+
+counter2();
+counter2();
+counter2();
+counter2();
+counter2();
