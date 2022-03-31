@@ -1,31 +1,55 @@
 class Counter {
-  constructor() {
+  constructor(runEveryFiveTimes) {
     this.counter = 0;
+    this.callback = runEveryFiveTimes;
   }
-  increase(runIf5Times) {
+  increase() {
     this.counter++;
     console.log(this.counter);
     if (this.counter % 5 === 0) {
-      runIf5Times(this.counter);
+      this.callback(this.counter);
     }
   }
 }
-const coolCounter = new Counter();
+
 function printSomething(num) {
   console.log(`5의 배수 (${num})`);
 }
-coolCounter.increase(printSomething);
-coolCounter.increase(printSomething);
-coolCounter.increase(printSomething);
-coolCounter.increase(printSomething);
-coolCounter.increase(printSomething);
-coolCounter.increase(printSomething);
-coolCounter.increase(printSomething);
-coolCounter.increase(printSomething);
-coolCounter.increase(printSomething);
-coolCounter.increase(printSomething);
-coolCounter.increase(printSomething);
-coolCounter.increase(printSomething);
-coolCounter.increase(printSomething);
-coolCounter.increase(printSomething);
-coolCounter.increase(printSomething);
+function alertNum(num) {
+  alert(`5의 배수 (${num})`);
+}
+
+const coolCounter = new Counter(printSomething);
+
+coolCounter.increase();
+coolCounter.increase();
+coolCounter.increase();
+coolCounter.increase();
+coolCounter.increase();
+coolCounter.increase();
+coolCounter.increase();
+coolCounter.increase();
+coolCounter.increase();
+coolCounter.increase();
+coolCounter.increase();
+coolCounter.increase();
+coolCounter.increase();
+coolCounter.increase();
+coolCounter.increase();
+
+/*
+class minus {
+  constructor(a, b) {
+    this.a = a;
+    this.b = b;
+  }
+  get age() {
+    return this.calcAge();
+  }
+  calcAge() {
+    return this.a - this.b;
+  }
+}
+const sum = new minus(23, 2);
+console.log(sum.age);
+*/
