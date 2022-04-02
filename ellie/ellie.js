@@ -1,14 +1,31 @@
-class calcAge {
-  constructor(a, b) {
-    this.a = a;
-    this.b = b;
+class Counter {
+  constructor(runEveryFiveTimes) {
+    this.counter = 0;
+    this.callback = runEveryFiveTimes;
   }
-  get age() {
-    return this.minus();
-  }
-  minus() {
-    return this.a - this.b;
+  increase() {
+    this.counter++;
+    console.log(this.counter);
+    if (this.counter % 5 === 0) {
+      this.callback && this.callback(this.counter);
+      /*if (this.callback) {
+        this.callback(this.counter);
+      }*/
+    }
   }
 }
-const sum = new calcAge(23, 2);
-console.log(sum.age);
+function printSomething(num) {
+  console.log(`5의 배수 (${num})`);
+}
+function alertNum(num) {
+  alert(`5의 배수 (${num})`);
+}
+
+const printCounter = new Counter();
+const alertCounter = new Counter(alertNum);
+
+printCounter.increase();
+printCounter.increase();
+printCounter.increase();
+printCounter.increase();
+printCounter.increase();
