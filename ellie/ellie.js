@@ -21,11 +21,5 @@ function alertNum(num) {
   alert(`5의 배수 (${num})`);
 }
 
-const printCounter = new Counter();
+const printCounter = new Counter(printSomething);
 const alertCounter = new Counter(alertNum);
-
-printCounter.increase();
-printCounter.increase();
-printCounter.increase();
-printCounter.increase();
-printCounter.increase();
