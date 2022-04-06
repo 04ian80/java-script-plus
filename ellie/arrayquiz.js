@@ -60,6 +60,15 @@ console.log(ifLowerThan50); //배열에서 특정 객체 찾기.
 const result4 = students.reduce((prev, curr) => prev + curr.score, 0);
 console.log(result4 / students.length);
 
+function average(findScore) {
+  let sum = 0;
+  for (let i = 0; i < findScore.length; i++) {
+    sum += findScore[i];
+  }
+  return sum / findScore.length;
+}
+console.log(average(findScore));
+
 // 10 make a string containing all the scores
 // result should be: '45, 80, 90, 66, 88'
 const stringScore = findScore.join();
