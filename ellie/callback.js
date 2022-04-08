@@ -1,49 +1,28 @@
-class UserStorage {
-  loginUser(id, password, onSuccess, onError) {
-    setTimeout(() => {
-      if (
-        (id === "ellie" && password === "dream") ||
-        (id === "coder" && password === "academy")
-      ) {
-        onSuccess(id);
-      } else {
-        onError(new Error("not found"));
-      }
-    }, 2000);
-  }
-
-  getRoles(user, onSuccess, onError) {
-    setTimeout(() => {
-      if (user === "ellie") {
-        onSuccess({ name: "ellie", role: "admin" });
-      } else {
-        onError(new Error("no access"));
-      }
-    }, 1000);
-  }
+//ex1)
+function add(a, b) {
+  return a + b;
 }
 
-//callback hell
-const userStorage = new UserStorage();
-const id = prompt("enter your id");
-const password = prompt("enter your password");
-userStorage.loginUser(
-  id,
-  password,
-  (user) => {
-    userStorage.getRoles(
-      user,
-      (userWithRole) => {
-        alert(
-          `Hello ${userWithRole.name}, you have a ${userWithRole.role} role`
-        );
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
-  },
-  (error) => {
-    console.log(error);
-  }
-);
+function divide(a, b) {
+  return a / b;
+}
+
+function calculator(callback) {
+  const result = callback(6, 3);
+  console.log(result);
+}
+
+calculator(add);
+calculator(divide);
+
+//ex2)
+//비동기의 좋은 예)
+console.log("1");
+/*
+setTimeout(function () {
+  console.log("3");
+}, 1000);
+*/
+//화살표 함수로 간단히 쓸 수 있다.
+setTimeout(() => console.log("3"), 1000);
+console.log("2");
