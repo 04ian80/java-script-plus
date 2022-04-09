@@ -24,5 +24,5 @@ setTimeout(function () {
 }, 1000);
 */
 //화살표 함수로 간단히 쓸 수 있다.
-setTimeout(() => console.log("3"), 1000);
+setTimeout(() => console.log("3"), 2000);
 console.log("2");
