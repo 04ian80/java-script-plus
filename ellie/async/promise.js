@@ -4,7 +4,7 @@ const promise = new Promise((resolve, reject) => {
   //doing something heavy(network...data...)
   console.log('doing something...');
   setTimeout(() => {
-    //resolve("name");
+    //resolve('name');
     reject(new Error('no network'));
   }, 2000);
 });

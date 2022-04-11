@@ -2,22 +2,22 @@ class UserStorage {
   loginUser(id, password, onSuccess, onError) {
     setTimeout(() => {
       if (
-        (id === "ellie" && password === "dream") ||
-        (id === "coder" && password === "academy")
+        (id === 'ellie' && password === 'dream') ||
+        (id === 'coder' && password === 'academy')
       ) {
         onSuccess(id);
       } else {
-        onError(new Error("not found"));
+        onError(new Error('not found'));
       }
     }, 2000);
   }
 
   getRoles(user, onSuccess, onError) {
     setTimeout(() => {
-      if (user === "ellie") {
-        onSuccess({ name: "ellie", role: "admin" });
+      if (user === 'ellie') {
+        onSuccess({ name: 'ellie', role: 'admin' });
       } else {
-        onError(new Error("no access"));
+        onError(new Error('no access'));
       }
     }, 1000);
   }
@@ -25,8 +25,8 @@ class UserStorage {
 
 //callback hell
 const userStorage = new UserStorage();
-const id = prompt("enter your id");
-const password = prompt("enter your password");
+const id = prompt('enter your id');
+const password = prompt('enter your password');
 userStorage.loginUser(
   id,
   password,
@@ -47,3 +47,5 @@ userStorage.loginUser(
     console.log(error);
   }
 );
+
+//id, password, (user)=>, (error)
