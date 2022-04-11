@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
 const promise = new Promise((resolve, reject) => {
   //doing something heavy(network...data...)
-  console.log("doing something...");
+  console.log('doing something...');
   setTimeout(() => {
     //resolve("name");
-    reject(new Error("no network"));
+    reject(new Error('no network'));
   }, 2000);
 });
 
@@ -23,5 +23,26 @@ promise
   })
   //성공하든 실패하든 수행되는 finally
   .finally(() => {
-    console.log("finally");
+    console.log('finally');
   });
+
+// Promise Chaining
+const fetchNumber = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve(1);
+    reject(new Error('type error'));
+  }, 2000);
+});
+
+fetchNumber
+  .then((num) => num * 2) //resolve에서 가져온 1 곱하기 2 = 2
+  .then((num) => num * 3) //2 곱하기 3 = 6
+  .then((num) => {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => resolve(num - 1), 1000);
+    }); // 성공한다면 '6 빼기 1 = 5' 를 1초뒤에 실행
+  })
+  .then((num) => console.log(num)) // 실행되면 콘솔로그
+  .catch((error) => {
+    setTimeout(() => console.log(error), 5000);
+  }); //  resolve에서 1을 못가져온다면 reject의 메세지를 받아 5초후에 출력
