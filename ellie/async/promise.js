@@ -29,7 +29,7 @@ promise
 // Promise Chaining
 const fetchNumber = new Promise((resolve, reject) => {
   setTimeout(() => {
-    resolve(1);
+    //resolve(1);
     reject(new Error('type error'));
   }, 2000);
 });
@@ -46,3 +46,31 @@ fetchNumber
   .catch((error) => {
     setTimeout(() => console.log(error), 5000);
   }); //  resolve에서 1을 못가져온다면 reject의 메세지를 받아 5초후에 출력
+
+// Error Handling
+const getHen = () =>
+  new Promise((resolve, reject) => {
+    setTimeout(() => resolve('🐔'), 1000);
+  });
+const getEgg = (hen) =>
+  new Promise((resolve, reject) => {
+    setTimeout(() => reject(new Error(`error! ${hen} => 🥚`)), 1000);
+  });
+const cook = (egg) =>
+  new Promise((resolve, reject) => {
+    setTimeout(() => resolve(`${egg} => 🍳`), 3000);
+  });
+
+getHen() //
+  .then(getEgg)
+  .catch((error) => {
+    return '🥖';
+  })
+  .then(cook)
+  .then(console.log);
+//위에 코드는 아에의 주석처리 된 코드를 줄인 코드.
+/*
+  .then((hen) => getEgg(hen))
+  .then((egg) => cook(egg))
+  .then((meal) => console.log(meal));
+*/
