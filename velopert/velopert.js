@@ -1,4 +1,4 @@
-//함수
+//객체
 const bride = {
   name: 'monica',
   gender: 'women',
